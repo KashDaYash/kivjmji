@@ -1,8 +1,8 @@
 # Copyright (C) 2020-2021 by KashDaYash@Github, < https://github.com/KashDaYash >.
 #
-# This file is part of < https://github.com/KashDaYash/YaaraBot > project,
+# This file is part of < https://github.com/TeamYaara/YaaraBot > project,
 # and is released under the "GNU v3.0 License Agreement".
-# Please see < https://github.com/KashDaYash/YaaraBot/blob/master/LICENSE >
+# Please see < https://github.com/TeamYaara/YaaraBot/blob/master/LICENSE >
 #
 # All rights reserved.
 
@@ -63,7 +63,7 @@ def get_readable_time(seconds: int) -> str:
 async def alive(_, m):
     start_time = time.time()
     uptime = get_readable_time((time.time() - StartTime))
-    reply_msg = f"**[Yaara](https://github.com/KashDaYash/YaaraBot)**\n"
+    reply_msg = f"**[Yaara](https://github.com/TeamYaara/YaaraBot)**\n"
     reply_msg += f"__Python__: `{__python_version__}`\n"
     reply_msg += f"__@Pyrogram version__: `{__pyro_version__}`\n"
     end_time = time.time()

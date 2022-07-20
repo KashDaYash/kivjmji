@@ -1,8 +1,8 @@
 # Copyright (C) 2020-2021 by KashDaYash@Github, < https://github.com/KashDaYash >.
 #
-# This file is part of < https://github.com/KashDaYash/YaaraBot > project,
+# This file is part of < https://github.com/TeamYaara/YaaraBot > project,
 # and is released under the "GNU v3.0 License Agreement".
-# Please see < https://github.com/KashDaYash/YaaraBot/blob/master/LICENSE >
+# Please see < https://github.com/TeamYaara/YaaraBot/blob/master/LICENSE >
 #
 # All rights reserved.
 
