@@ -1,18 +1,18 @@
-# Copyright (C) 2020-2021 by okay-retard@Github, < https://github.com/okay-retard >.
+# Copyright (C) 2020-2021 by KashDaYash@Github, < https://github.com/KashDaYash >.
 #
-# This file is part of < https://github.com/okay-retard/ZectUserBot > project,
+# This file is part of < https://github.com/KashDaYash/YaaraBot > project,
 # and is released under the "GNU v3.0 License Agreement".
-# Please see < https://github.com/okay-retard/ZectUserBot/blob/master/LICENSE >
+# Please see < https://github.com/KashDaYash/YaaraBot/blob/master/LICENSE >
 #
 # All rights reserved.
 
 from pyrogram import idle, Client, filters
 from config import PREFIX
-from Zect import app, LOGGER
+from Yaara import app, LOGGER
 import logging
-from Zect.modules import *
+from Yaara.modules import *
 
 app.start()
 me = app.get_me()
-print(f"Zect UserBot started for user {me.id}. Type {PREFIX}help in any telegram chat.")
+print(f"Yaara UserBot started for user {me.id}. Type {PREFIX}help in any telegram chat.")
 idle()

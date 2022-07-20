@@ -1,8 +1,8 @@
-# Copyright (C) 2020-2021 by okay-retard@Github, < https://github.com/okay-retard >.
+# Copyright (C) 2020-2021 by KashDaYash@Github, < https://github.com/KashDaYash >.
 #
-# This file is part of < https://github.com/okay-retard/ZectUserBot > project,
+# This file is part of < https://github.com/KashDaYash/YaaraBot > project,
 # and is released under the "GNU v3.0 License Agreement".
-# Please see < https://github.com/okay-retard/ZectUserBot/blob/master/LICENSE >
+# Please see < https://github.com/KashDaYash/YaaraBot/blob/master/LICENSE >
 #
 # All rights reserved.
 
@@ -10,13 +10,13 @@ import time
 from pyrogram import filters
 import asyncio
 
-from Zect import app, CMD_HELP
+from Yaara import app, CMD_HELP
 from config import PREFIX, LOG_CHAT
-from Zect.helpers.pyrohelper import get_arg
-import Zect.database.afkdb as Zect
-from Zect.helpers.pyrohelper import user_afk
-from Zect.modules.alive import get_readable_time
-from Zect.helpers.utils import get_message_type, Types
+from Yaara.helpers.pyrohelper import get_arg
+import Yaara.database.afkdb as Yaara
+from Yaara.helpers.pyrohelper import user_afk
+from Yaara.modules.alive import get_readable_time
+from Yaara.helpers.utils import get_message_type, Types
 
 CMD_HELP.update(
     {
@@ -43,14 +43,14 @@ async def afk(client, message):
         reason = None
     else:
         reason = arg
-    await Zect.set_afk(True, afk_time, reason)
+    await Yaara.set_afk(True, afk_time, reason)
     await message.edit("**I'm goin' AFK**")
 
 
 @app.on_message(filters.mentioned & ~filters.bot & filters.create(user_afk), group=11)
 async def afk_mentioned(_, message):
     global MENTIONED
-    afk_time, reason = await Zect.afk_stuff()
+    afk_time, reason = await Yaara.afk_stuff()
     afk_since = get_readable_time(time.time() - afk_time)
     if "-" in str(message.chat.id):
         cid = str(message.chat.id)[4:]
@@ -87,7 +87,7 @@ async def afk_mentioned(_, message):
 
 @app.on_message(filters.create(user_afk) & filters.outgoing)
 async def auto_unafk(_, message):
-    await Zect.set_unafk()
+    await Yaara.set_unafk()
     unafk_message = await app.send_message(message.chat.id, "**I'm no longer AFK**")
     global MENTIONED
     text = "**Total {} mentioned you**\n".format(len(MENTIONED))

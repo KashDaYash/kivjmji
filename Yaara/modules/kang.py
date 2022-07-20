@@ -1,8 +1,8 @@
-# Copyright (C) 2020-2021 by okay-retard@Github, < https://github.com/okay-retard >.
+# Copyright (C) 2020-2021 by KashDaYash@Github, < https://github.com/KashDaYash >.
 #
-# This file is part of < https://github.com/okay-retard/ZectUserBot > project,
+# This file is part of < https://github.com/KashDaYash/YaaraBot > project,
 # and is released under the "GNU v3.0 License Agreement".
-# Please see < https://github.com/okay-retard/ZectUserBot/blob/master/LICENSE >
+# Please see < https://github.com/KashDaYash/YaaraBot/blob/master/LICENSE >
 #
 # All rights reserved.
 
@@ -16,8 +16,8 @@ from pyrogram import emoji, filters
 from pyrogram.raw.functions.messages import GetStickerSet
 from pyrogram.raw.types import InputStickerSetShortName
 from pyrogram.errors import YouBlockedUser, StickersetInvalid
-from Zect.helpers.pyrohelper import get_args
-from Zect import app, CMD_HELP
+from Yaara.helpers.pyrohelper import get_args
+from Yaara import app, CMD_HELP
 from config import PREFIX
 
 CMD_HELP.update(
@@ -85,7 +85,7 @@ async def kang(client, message):
             u_name = "@" + u_name
         else:
             u_name = user.first_name or user.id
-        packname = f"a{user.id}_by_zect_{pack}"
+        packname = f"a{user.id}_by_Yaara_{pack}"
         custom_packnick = f"{u_name}'s kang pack"
         packnick = f"{custom_packnick} Vol.{pack}"
         cmd = "/newpack"
@@ -112,7 +112,7 @@ async def kang(client, message):
             limit = "50" if is_anim else "120"
             while limit in await get_response(message):
                 pack += 1
-                packname = f"a{user.id}_by_zect_{pack}"
+                packname = f"a{user.id}_by_Yaara_{pack}"
                 packnick = f"{custom_packnick} Vol.{pack}"
                 if is_anim:
                     packname += "_anim"

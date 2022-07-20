@@ -1,8 +1,8 @@
-# Copyright (C) 2020-2021 by okay-retard@Github, < https://github.com/okay-retard >.
+# Copyright (C) 2020-2021 by KashDaYash@Github, < https://github.com/KashDaYash >.
 #
-# This file is part of < https://github.com/okay-retard/ZectUserBot > project,
+# This file is part of < https://github.com/KashDaYash/YaaraBot > project,
 # and is released under the "GNU v3.0 License Agreement".
-# Please see < https://github.com/okay-retard/ZectUserBot/blob/master/LICENSE >
+# Please see < https://github.com/KashDaYash/YaaraBot/blob/master/LICENSE >
 #
 # All rights reserved.
 
@@ -11,7 +11,7 @@ import asyncio
 import time
 from datetime import datetime
 from pyrogram import filters
-from Zect import app, StartTime, CMD_HELP
+from Yaara import app, StartTime, CMD_HELP
 from sys import version_info
 
 from pyrogram import __version__ as __pyro_version__
@@ -63,11 +63,11 @@ def get_readable_time(seconds: int) -> str:
 async def alive(_, m):
     start_time = time.time()
     uptime = get_readable_time((time.time() - StartTime))
-    reply_msg = f"**[Zect](https://github.com/okay-retard/ZectUserBot)**\n"
+    reply_msg = f"**[Yaara](https://github.com/KashDaYash/YaaraBot)**\n"
     reply_msg += f"__Python__: `{__python_version__}`\n"
     reply_msg += f"__@Pyrogram version__: `{__pyro_version__}`\n"
     end_time = time.time()
-    reply_msg += f"__Zect uptime__: {uptime}"
+    reply_msg += f"__Yaara uptime__: {uptime}"
     photo = "https://telegra.ph//file/dcd069c3eb26c9fa3011d.jpg"
     await m.delete()
     if m.reply_to_message:

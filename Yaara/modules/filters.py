@@ -1,18 +1,18 @@
-# Copyright (C) 2020-2021 by okay-retard@Github, < https://github.com/okay-retard >.
+# Copyright (C) 2020-2021 by KashDaYash@Github, < https://github.com/KashDaYash >.
 #
-# This file is part of < https://github.com/okay-retard/ZectUserBot > project,
+# This file is part of < https://github.com/KashDaYash/YaaraBot > project,
 # and is released under the "GNU v3.0 License Agreement".
-# Please see < https://github.com/okay-retard/ZectUserBot/blob/master/LICENSE >
+# Please see < https://github.com/KashDaYash/YaaraBot/blob/master/LICENSE >
 #
 # All rights reserved.
 
 import re
 
 from pyrogram import filters
-from Zect import app, CMD_HELP
+from Yaara import app, CMD_HELP
 from config import PREFIX, LOG_CHAT
-from Zect.helpers.pyrohelper import get_arg
-from Zect.database.filtersdb import (
+from Yaara.helpers.pyrohelper import get_arg
+from Yaara.database.filtersdb import (
     add_filters,
     all_filters,
     del_filters,

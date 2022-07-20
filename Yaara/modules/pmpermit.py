@@ -1,8 +1,8 @@
-# Copyright (C) 2020-2021 by okay-retard@Github, < https://github.com/okay-retard >.
+# Copyright (C) 2020-2021 by KashDaYash@Github, < https://github.com/KashDaYash >.
 #
-# This file is part of < https://github.com/okay-retard/ZectUserBot > project,
+# This file is part of < https://github.com/KashDaYash/YaaraBot > project,
 # and is released under the "GNU v3.0 License Agreement".
-# Please see < https://github.com/okay-retard/ZectUserBot/blob/master/LICENSE >
+# Please see < https://github.com/KashDaYash/YaaraBot/blob/master/LICENSE >
 #
 # All rights reserved.
 
@@ -10,9 +10,9 @@ from pyrogram import filters
 import asyncio
 
 from pyrogram.methods import messages
-from Zect import app, CMD_HELP
-from Zect.helpers.pyrohelper import get_arg, denied_users
-import Zect.database.pmpermitdb as Zectdb
+from Yaara import app, CMD_HELP
+from Yaara.helpers.pyrohelper import get_arg, denied_users
+import Yaara.database.pmpermitdb as Yaaradb
 from config import PREFIX
 
 CMD_HELP.update(
@@ -41,10 +41,10 @@ async def pmguard(client, message):
         await message.edit("**I only understand on or off**")
         return
     if arg == "off":
-        await Zectdb.set_pm(False)
+        await Yaaradb.set_pm(False)
         await message.edit("**PM Guard Deactivated**")
     if arg == "on":
-        await Zectdb.set_pm(True)
+        await Yaaradb.set_pm(True)
         await message.edit("**PM Guard Activated**")
 
 
@@ -54,7 +54,7 @@ async def pmguard(client, message):
     if not arg:
         await message.edit("**Set limit to what?**")
         return
-    await Zectdb.set_limit(int(arg))
+    await Yaaradb.set_limit(int(arg))
     await message.edit(f"**Limit set to {arg}**")
 
 
@@ -65,10 +65,10 @@ async def setpmmsg(client, message):
         await message.edit("**What message to set**")
         return
     if arg == "default":
-        await Zectdb.set_permit_message(Zectdb.PMPERMIT_MESSAGE)
+        await Yaaradb.set_permit_message(Yaaradb.PMPERMIT_MESSAGE)
         await message.edit("**Anti_PM message set to default**.")
         return
-    await Zectdb.set_permit_message(f"`{arg}`")
+    await Yaaradb.set_permit_message(f"`{arg}`")
     await message.edit("**Custom anti-pm message set**")
 
 
@@ -79,18 +79,18 @@ async def setpmmsg(client, message):
         await message.edit("**What message to set**")
         return
     if arg == "default":
-        await Zectdb.set_block_message(Zectdb.BLOCKED)
+        await Yaaradb.set_block_message(Yaaradb.BLOCKED)
         await message.edit("**Block message set to default**.")
         return
-    await Zectdb.set_block_message(f"`{arg}`")
+    await Yaaradb.set_block_message(f"`{arg}`")
     await message.edit("**Custom block message set**")
 
 
 @app.on_message(filters.command("allow", PREFIX) & filters.me & filters.private)
 async def allow(client, message):
     chat_id = message.chat.id
-    pmpermit, pm_message, limit, block_message = await Zectdb.get_pm_settings()
-    await Zectdb.allow_user(chat_id)
+    pmpermit, pm_message, limit, block_message = await Yaaradb.get_pm_settings()
+    await Yaaradb.allow_user(chat_id)
     await message.edit(f"**I have allowed [you](tg://user?id={chat_id}) to PM me.**")
     async for message in app.search_messages(
         chat_id=message.chat.id, query=pm_message, limit=1, from_user="me"
@@ -102,7 +102,7 @@ async def allow(client, message):
 @app.on_message(filters.command("deny", PREFIX) & filters.me & filters.private)
 async def deny(client, message):
     chat_id = message.chat.id
-    await Zectdb.deny_user(chat_id)
+    await Yaaradb.deny_user(chat_id)
     await message.edit(f"**I have denied [you](tg://user?id={chat_id}) to PM me.**")
 
 
@@ -116,7 +116,7 @@ async def deny(client, message):
 )
 async def reply_pm(client, message):
     global FLOOD_CTRL
-    pmpermit, pm_message, limit, block_message = await Zectdb.get_pm_settings()
+    pmpermit, pm_message, limit, block_message = await Yaaradb.get_pm_settings()
     user = message.from_user.id
     user_warns = 0 if user not in USERS_AND_WARNS else USERS_AND_WARNS[user]
     if user_warns <= limit - 2:

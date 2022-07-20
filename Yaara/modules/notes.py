@@ -1,16 +1,16 @@
-# Copyright (C) 2020-2021 by okay-retard@Github, < https://github.com/okay-retard >.
+# Copyright (C) 2020-2021 by KashDaYash@Github, < https://github.com/KashDaYash >.
 #
-# This file is part of < https://github.com/okay-retard/ZectUserBot > project,
+# This file is part of < https://github.com/KashDaYash/YaaraBot > project,
 # and is released under the "GNU v3.0 License Agreement".
-# Please see < https://github.com/okay-retard/ZectUserBot/blob/master/LICENSE >
+# Please see < https://github.com/KashDaYash/YaaraBot/blob/master/LICENSE >
 #
 # All rights reserved.
 
 from pyrogram import filters
 
-from Zect import app, CMD_HELP
-from Zect.helpers.pyrohelper import get_arg
-import Zect.database.notesdb as Zect
+from Yaara import app, CMD_HELP
+from Yaara.helpers.pyrohelper import get_arg
+import Yaara.database.notesdb as Yaara
 from config import PREFIX, LOG_CHAT
 
 CMD_HELP.update(
@@ -36,7 +36,7 @@ async def save(client, message):
         await message.edit("**You must give a name for a note.**")
         return
     note_name = arg
-    note = await Zect.get_note(note_name)
+    note = await Yaara.get_note(note_name)
     if note:
         await message.edit(f"**Note `{note_name}` already exists**")
         return
@@ -45,7 +45,7 @@ async def save(client, message):
         await message.edit("Reply to a message to save a note")
         return
     copy = await app.copy_message(LOG_CHAT, message.chat.id, reply.message_id)
-    await Zect.save_note(note_name, copy.message_id)
+    await Yaara.save_note(note_name, copy.message_id)
     await message.edit("**Note saved**")
 
 
@@ -56,7 +56,7 @@ async def get(client, message):
         await message.edit("Get what?")
         return
     note_name = arg
-    note = await Zect.get_note(note_name)
+    note = await Yaara.get_note(note_name)
     if not note:
         await message.edit(f"**Note {note_name} dosen't exists**")
         return
@@ -79,18 +79,18 @@ async def clear(client, message):
         await message.edit("What do you want to delete?")
         return
     note_name = arg
-    note = await Zect.get_note(note_name)
+    note = await Yaara.get_note(note_name)
     if not note:
         await message.edit(f"**Failed to delete note `{note_name}`**")
         return
-    await Zect.rm_note(note_name)
+    await Yaara.rm_note(note_name)
     await message.edit(f"**Succesfully deleted note `{note_name}`**")
 
 
 @app.on_message(filters.command("notes", PREFIX) & filters.me)
 async def notes(client, message):
     msg = "**Saved Notes**\n\n"
-    all_notes = await Zect.all_notes()
+    all_notes = await Yaara.all_notes()
     if not all_notes:
         await message.edit("**No notes has been saved**")
         return
@@ -101,5 +101,5 @@ async def notes(client, message):
 
 @app.on_message(filters.command("clearall", PREFIX) & filters.me)
 async def clearall(client, message):
-    await Zect.rm_all()
+    await Yaara.rm_all()
     await message.edit("**Removed all saved notes**")

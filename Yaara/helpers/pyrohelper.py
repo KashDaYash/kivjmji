@@ -1,16 +1,16 @@
-# Copyright (C) 2020-2021 by okay-retard@Github, < https://github.com/okay-retard >.
+# Copyright (C) 2020-2021 by KashDaYash@Github, < https://github.com/KashDaYash >.
 #
-# This file is part of < https://github.com/okay-retard/ZectUserBot > project,
+# This file is part of < https://github.com/KashDaYash/YaaraBot > project,
 # and is released under the "GNU v3.0 License Agreement".
-# Please see < https://github.com/okay-retard/ZectUserBot/blob/master/LICENSE >
+# Please see < https://github.com/KashDaYash/YaaraBot/blob/master/LICENSE >
 #
 # All rights reserved.
 
 from pyrogram.types import Message, User
 from pyrogram import Client
-from Zect.database.afkdb import get_afk_status
-from Zect.database.pmpermitdb import get_approved_users, pm_guard
-import Zect.database.welcomedb as Zectdb
+from Yaara.database.afkdb import get_afk_status
+from Yaara.database.pmpermitdb import get_approved_users, pm_guard
+import Yaara.database.welcomedb as Yaaradb
 import shlex
 
 
@@ -59,7 +59,7 @@ async def denied_users(filter, client: Client, message: Message):
 
 
 async def welcome_chat(filter, client: Client, message: Message):
-    to_welcome = await Zectdb.get_welcome(str(message.chat.id))
+    to_welcome = await Yaaradb.get_welcome(str(message.chat.id))
     if to_welcome:
         return True
     else:
