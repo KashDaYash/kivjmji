@@ -12,7 +12,7 @@ from pyrogram import filters
 from pyrogram.types import Message, ChatPermissions
 
 from pyrogram.errors import UserAdminInvalid
-from pyrogram.methods.chats.get_chat_members import Filters as ChatMemberFilters
+from pyrogram import filters as ChatMemberFilters
 
 from Yaara import app, CMD_HELP, LOGGER
 from Yaara.helpers.pyrohelper import get_arg, get_args
